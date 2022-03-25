@@ -1,0 +1,123 @@
+########################
+ &GUD_FORCING_PARAMS
+ gud_chlInitBalanced= T,
+ ironFile='/home/ezakem/gud1/data/eccov3/mahowald2009_solubile_current_smooth_oce_mth-2d.bin',
+ ironPeriod= -12.,
+ gud_inscal_iron= 1000.,
+ PARFile='/home/ezakem/gud1/data/eccov3/ecco_oasim_total_below_oneband_einm2d.bin',
+ PARPeriod= -12.,
+ gud_inscal_PAR= 11.574074074074,
+ windFile='/home/ezakem/gud1/data/eccov3/tren_speed_mth-2d.bin',
+ windPeriod= -12.,
+ icefile = '/home/ezakem/gud1/data/eccov3/SIarea.bin',
+ icestartdate1 = 19990101,
+ icestartdate2 = 120000,
+ iceperiod     = 86400.0,
+ /
+########################
+ &GUD_PARAMS
+ diaz_ini_fac= 0.1,
+ gud_linFSConserve= T,
+ gud_seed= 56,
+ gud_read_phos= F,
+ tempCoeffArr= 0.8,
+ PARmin= 0.1,
+ alpfe= 1.0,
+ freefemax = .1E-3,
+ depthfesed= 7000.,
+ scav_rat= 1.73611111111111111111E-7,
+# kdoc=  3.8580246913580247E-7,  ! 1/30day
+# kdop=  3.8580246913580247E-7,  ! 1/30day
+# kdon=  3.8580246913580247E-7,  ! 1/30day
+# kdofe= 3.8580246913580247E-7,  ! 1/30day
+# kPOC=  3.8580246913580247E-7,  ! 1/30day
+# kPOP=  3.8580246913580247E-7,  ! 1/30day
+# kPON=  3.8580246913580247E-7,  ! 1/30day
+# kPOFe= 3.8580246913580247E-7,  ! 1/30day
+ kPOSi= 7.7160493827160493E-8,  ! 1/150day
+ phygrazmin= 120E-10,
+ gud_atmos_pCO2= 278E-6,
+#sinking to 10m/day (1/3600/24)
+ wC_sink=1.157407407E-04, 
+ wP_sink=1.157407407E-04, 
+ wN_sink=1.157407407E-04, 
+ wFe_sink=1.157407407E-04, 
+ wSi_sink=1.157407407E-04, 
+ /
+########################
+ &GUD_RADTRANS_PARAMS
+ /
+########################
+ &GUD_RANDOM_PARAMS
+ /
+########################
+ &GUD_TRAIT_PARAMS
+#                        D  l  s  P  T  C  S  Z
+ grp_nplank(:)=          1, 1, 1, 1, 1, 1, 6, 4,
+ grp_photo(:)=           1, 1, 1, 1, 1, 1, 1, 0,
+ grp_pred(:)=            0, 0, 0, 0, 0, 0, 0, 1,
+ grp_prey(:)=            1, 1, 1, 1, 1, 1, 1, 0,
+ grp_hasSi(:)=           1, 0, 0, 0, 0, 0, 0, 0,
+ grp_hasPIC(:)=          0, 0, 0, 0, 0, 1, 0, 0,
+ grp_DIAZO(:)=           0, 0, 0, 0, 1, 0, 0, 0,
+ grp_useNH4(:)=          1, 1, 1, 1, 1, 1, 1, 0,
+ grp_useNO2(:)=          1, 1, 1, 1, 1, 1, 1, 0,
+ grp_useNO3(:)=          1, 1, 1, 1, 1, 1, 1, 0,
+ grp_combNO(:)=          1, 1, 1, 1, 1, 1, 1, 0,
+ grp_tempMort(:)=        1, 1, 1, 1, 1, 1, 1, 1,
+ grp_tempMort2(:)=       1, 1, 1, 1, 1, 1, 1, 1,
+ grp_Xmin(:)= 7*120E-20,
+ grp_mqyield(:)= 7*5E-5,
+ grp_chl2cmax(:)= 7*.3,
+ grp_acclimtimescl(:)= 7*.5,
+ grp_acclimtimescl_denom(:)= 7*86400.,
+ logvolbase= -.9465,
+ logvolinc= .513,
+ logvol0ind(:)= 8, 8, 3, 1, 8, 6, 1, 3,
+ grp_logvolind(:,7)=6*1, 
+#check zeroing out works in 
+# biovolfac(:)= 7*3.2583670100200877, 1.,
+ a_biosink(:)= 7*6.951416635391563E-7, 0.,  ! .05*dm**.85
+ b_biosink(:)= 7*.2833333333333333, 0.,
+ a_vmax_DIC(1)= 7.5,
+ a_vmax_DIC(2)= 2.0,
+ a_vmax_DIC(3)= 0.6,
+ a_vmax_DIC(4)= 0.6,
+ a_vmax_DIC(5)= 0.9,
+ a_vmax_DIC(6)= 3.0,
+ a_vmax_DIC(7)= 0.0,
+ a_vmax_DIC_denom(:)= 7*86400.,
+ b_vmax_DIC(:)= -0.15, -0.15, -0.15, 0.07, -0.15, -0.15, 0.07, 0.,
+#
+ gud_effective_ksat= T,
+#
+ grp_ExportFracMort(:)= .4, .4, .1, .1, .4, .4, .1, .6
+ grp_ExportFracMort2(:)= .4, .4, .1, .1, .4, .4, .1, .6
+ grp_ExportFracPreyPred(1:7,8)= 7*.8,
+ grp_R_ChlC(8)= 0.,
+# a_graz(8)= 2.6213047103166739E-05,  ! 2/day
+ a_graz(8)= 1.57407407E-5,  ! 1/day 
+ b_graz(8)= 0.,
+#
+#steph now: linear: 6e-7 for P and 2e-7 for zoo. quad: 6e-7, 8e-7. mort 2: 9e-6 P, 1e-6 for Zoo... 
+#cez: have same linear mort (tiny) for all
+# grp_mort(:)= 6*1.6534391534391533e-06, 1.157407407407407e-07, 2.3148148148148148e-07,  ! 1/7days, 0.01/days, 1/50days
+ grp_mort(:)= 8*1.157407407407407e-07,  !0.01/days
+ grp_mort2(:)= 7*0, 1.227553310886644e-06, !0.1 for P and B, 0.7 for Z  w/ 6.6 conv 
+ grp_tempcoeff2= 7*.0003,
+#cez: change bacteria type: 
+#Original: grp_R_PC(:)= 8*0.008333333333333333,
+#CN=5: grp_R_PC(:)= 6*0.008333333333333333, 0.012500000000000, 0.008333333333333333, !C:P = 80 for all B
+ grp_R_PC(:)= 6*0.008333333333333333, 0.009433962264000000000, 0.008333333333333333, !C:P = 106 for all B -Redfield: 1/106
+#Original: grp_R_FeC(:)= 4*0.008333333333333333E-3, 0.03333333333333333E-3, 3*0.008333333333333333E-3,
+#CN=5: grp_R_FeC(:)= 4*0.008333333333333333E-3, 0.03333333333333333E-3, 0.008333333333333333E-3, 0.012500000000000E-3, 0.008333333333333333E-3,
+ grp_R_FeC(:)= 4*0.008333333333333333E-3, 0.03333333333333333E-3, 0.00943396226400000000E-3, 0.012500000000000E-3, 0.008333333333333333E-3, !Redfield: 
+#Original: grp_R_NC(:)= 4*0.13333333333333333, 0.3333333333333333, 3*0.13333333333333333,
+#CN=5: grp_R_NC(:)= 4*0.13333333333333333, 0.3333333333333333, 0.13333333333333333, 0.200000000000000, 0.13333333333333333,
+ grp_R_NC(:)= 4*0.13333333333333333, 0.3333333333333333, 0.13333333333333333, 0.150943396200000, 0.13333333333333333, !Redfield: 16/106
+ grp_R_SiC(:)= 0.13333333333333333, 7*0.,
+ grp_R_PICPOC(:)= 5*0., .8, 2*0.,
+# a_kg(8)= 6.,
+ a_kg(8)= 6.6,
+ b_kg(8)= 0.,
+ /
